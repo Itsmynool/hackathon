@@ -1,3 +1,5 @@
+from datetime import datetime
+import pytz
 import requests
 import openai
 import json
@@ -30,6 +32,10 @@ def getData(api_url):
 
 def getPrompt(data):
     openai.api_key = "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"
+    colombia_tz = pytz.timezone('America/Bogota')
+    hora_actual_colombia = datetime.now(colombia_tz)
+    hora_formateada = hora_actual_colombia.strftime('%Y-%m-%d %H:%M:%S')
+
     prompt = "Genera una descripción (Con los indices) para representar el entorno de manera visual con los siguientes datos: " + json.dumps(data) + " (La descripcion no debe superar 950 caracteres)"
     
     responseGPT = openai.Completion.create(
