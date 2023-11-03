@@ -8,6 +8,7 @@ app = Flask(__name__)
 def index():
     data = control.getData("https://apicomuna22.emcali.net.co/metrics/range_public?deviceId=0703060003")
     prompt = control.getPrompt(data)
+    prompt = prompt[:1000]
     image_url = control.getImage(prompt)
     
     data_complete = {"url": image_url,

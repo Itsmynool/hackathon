@@ -30,7 +30,7 @@ def getData(api_url):
 
 def getPrompt(data):
     openai.api_key = "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"
-    prompt = "Genera una descripción (Con los indices) para representar el entorno de manera visual con los siguientes datos:\n" + json.dumps(data) + "\n(La descripcion no debe superar 950 caracteres)"
+    prompt = "Genera una descripción (Con los indices) para representar el entorno de manera visual con los siguientes datos: " + json.dumps(data) + " (La descripcion no debe superar 950 caracteres)"
     
     responseGPT = openai.Completion.create(
         engine="text-davinci-003",
